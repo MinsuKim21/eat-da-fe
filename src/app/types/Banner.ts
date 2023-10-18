@@ -7,13 +7,13 @@ export interface BaseBanner {
 }
 
 // 특정 배너 조회
-export type Banner = BaseBanner;
+export type GetBanner = BaseBanner;
 
 //배너 수정
-export type UpdateBanner = Omit<BaseBanner, "id" | "countOfClicks">;
+export type PatchBanner = Omit<BaseBanner, "id" | "countOfClicks">;
 
 // 배너 생성
-export type NewBanner = UpdateBanner;
+export type PostBanner = PatchBanner;
 
 // 전체 배너 조회
-export type Banners = BaseBanner[];
+export type GetBanners = BaseBanner[];
