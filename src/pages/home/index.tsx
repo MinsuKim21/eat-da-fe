@@ -6,7 +6,7 @@ import CardList from '../../components/store/CardList';
 export default function Home() {
   return (
     // bg-black 지워야함
-    <main className="w-96 h-full flex flex-col gap-y-[0.5rem] bg-black">
+    <main className="w-full h-full flex flex-col gap-y-[0.5rem] bg-black">
       <Header />
       <Banner />
       <CategoryList />

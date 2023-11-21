@@ -8,18 +8,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  -webkit-scrollbar {
-    display: none;
-  }
-
   /* 파이어폭스 */
   scrollbar-width: none;
 
-  /* 모든 브라우저 */
+  /* IE 브라우저 */
   -ms-overflow-style: none;
-  /* IE와 엣지 */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+body::webkit-scrollbar {
+  /* 크롬 사파리 etc */
+  display: none;
 }

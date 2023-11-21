@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 export default function NotFoundPage() {
   const navigate = useNavigate();
   return (
-    <div className="w-96 h-96 relative bg-white">
+    <div className="w-full h-96 relative bg-white">
       <div className="w-56 h-16 left-[82px] top-[334px] absolute text-center text-yellow-300 text-3xl font-bold font-['Inter'] leading-loose">
         화면을 <br />
         불러오지 못했어요

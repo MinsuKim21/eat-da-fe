@@ -3,9 +3,9 @@ import IconButton from '../IconButton';
 
 export default function Header() {
   return (
-    <div className="w-96 h-40">
-      <div className="w-96 h-40 left-0 top-0 absolute bg-green-400" />
-      <div className="w-96 h-40 left-0 top-0 absolute bg-gray-600 bg-opacity-40">
+    <div className="w-full h-32">
+      <div className="w-full h-32 left-0 top-0 absolute bg-green-400" />
+      <div className="w-full h-32 left-0 top-0 absolute bg-gray-600 bg-opacity-40">
         <div className="w-full h-full flex flex-col justify-center  gap-y-6 text-white px-6">
           <div className="w-full flex justify-between ">
             <h1 className="text-2xl font-bold ">Eat-da</h1>
