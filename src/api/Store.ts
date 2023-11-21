@@ -1,8 +1,10 @@
 import api from './index';
 
+const PATH = '/stores';
+
 // 스토어 인터페이스
-export interface BaseStore {
-  id: string;
+export interface Store {
+  id: number;
   name: string;
   displayName?: string | null;
   address: string;
@@ -15,46 +17,84 @@ export interface BaseStore {
   cateogyId: string;
 }
 
-// 카테고리 기반 가게 조회
-export type GetCategoryStore = BaseStore;
+export type PostStore = Omit<Store, 'id'>;
 
-// 가게 생성
-export type PostStore = Omit<BaseStore, 'id'>;
-
-// 영업시간 인터페이스
-export interface BaseStoreHour {
+export interface StoreHour {
   storeId: string;
   dayOfweek: string;
   storeHours: { openAt: string; closeAt: string }[];
 }
-
-// 영업시간 특정 요일 조회 성공
-export type GetStoreHour = BaseStoreHour;
-
-// 영업시간 조회 성공
-export type GetStoreHours = BaseStoreHour[];
 
 //영업 시간 수정
 export type PutStoreHours = {
   storeHours: { dayOfWeek: string; openAt: string; closeAt: string }[];
 };
 
-// 메뉴 인터페이스
-export interface BaseMenu {
-  id: number;
-  name: string;
-  price: number;
-  imageUri?: string | null;
+interface IGetStoreParams {
+  storeId: number; // next store id
+  categoryId: number;
+  size: number;
 }
 
-//메뉴 조회
-export type GetMenu = BaseMenu;
+export async function getStores(params: IGetStoreParams): Promise<{ data: Store[] }> {
+  try {
+    const res = await api.get(`${PATH}`, { params });
+    return res.data;
+  } catch (e) {
+    throw e;
+  }
+}
 
-// 메뉴 전체 조회
-export type GetMenus = GetMenu[];
+export async function getStore(id: string): Promise<any> {
+  try {
+    const res = await api.post(`${PATH}/${id}`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+}
 
-//메뉴 생성
-export type PostMenu = Omit<BaseMenu, 'id'>;
+export async function postStore(data: Store): Promise<any> {
+  try {
+    const res = await api.post(`${PATH}`, data);
+    return res.data;
+  } catch (e) {
+    throw e;
+  }
+}
 
-//메뉴 수정
-export type PatchMenu = Partial<Omit<BaseMenu, 'id'>>; // 필드 중 하나만 있어도 된다
+export async function patchStore(id, data: Store): Promise<any> {
+  try {
+    const res = await api.patch(`${PATH}/${id}`, data);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function deleteStore(id: string) {
+  try {
+    const res = await api.delete(`${PATH}/${id}`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getAllMenuInStore(id: string) {
+  try {
+    const res = await api.get(`${PATH}/${id}/menu`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function patchAllMenuInStore(id: string) {
+  try {
+    const res = await api.patch(`${PATH}/${id}/menu`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+}

@@ -1,11 +1,12 @@
-import Header from '../../components/Header';
-import Banner from '../../components/Banner';
-import CategoryList from '../../components/CategoryList';
-import CardList from '../../components/CardList';
+import Header from '../../components/home/Header';
+import Banner from '../../components/home/Banner';
+import CategoryList from '../../components/home/CategoryList';
+import CardList from '../../components/store/CardList';
 
 export default function Home() {
   return (
-    <main className="w-96 h-full flex flex-col gap-y-[0.5rem]">
+    // bg-black 지워야함
+    <main className="w-full h-full flex flex-col gap-y-[0.5rem] bg-black">
       <Header />
       <Banner />
       <CategoryList />
