@@ -2,7 +2,7 @@ import api from './index';
 
 const PATH = '/banner';
 
-export interface BaseBanner {
+export interface Banner {
   id: number;
   order: number;
   imageUri: string;
@@ -11,13 +11,31 @@ export interface BaseBanner {
 }
 
 // 특정 배너 조회
-export type GetBanner = BaseBanner;
+export type GetBanner = Banner;
 
 //배너 수정
-export type PatchBanner = Omit<BaseBanner, 'id' | 'countOfClicks'>;
+export type PatchBanner = Omit<Banner, 'id' | 'countOfClicks'>;
 
 // 배너 생성
 export type PostBanner = PatchBanner;
 
 // 전체 배너 조회
-export type GetBanners = BaseBanner[];
+export type GetBanners = Banner[];
+
+export async function getBanners(params: any): Promise<{ data: Banner[] }> {
+  try {
+    const res = await api.get(`${PATH}`, { params });
+    return res.data;
+  } catch (e) {
+    throw e;
+  }
+}
+
+export async function postBanner(data: PostBanner): Promise<{ id: string }> {
+  try {
+    const res = await api.post(`/banners`, data);
+    return res.data;
+  } catch (e) {
+    throw e;
+  }
+}

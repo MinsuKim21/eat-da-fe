@@ -1,15 +1,15 @@
 import React from 'react';
-import IconButton from './IconButton';
+import IconButton from '../IconButton';
 
 export default function Header() {
   return (
     <div className="w-96 h-40">
       <div className="w-96 h-40 left-0 top-0 absolute bg-green-400" />
       <div className="w-96 h-40 left-0 top-0 absolute bg-gray-600 bg-opacity-40">
-        <div className="w-full h-full flex flex-col justify-center  gap-y-6 text-white">
-          <div className="flex justify-around">
-            <h1 className="text-2xl font-bold">Eat-da</h1>
-            <IconButton>
+        <div className="w-full h-full flex flex-col justify-center  gap-y-6 text-white px-6">
+          <div className="w-full flex justify-between ">
+            <h1 className="text-2xl font-bold ">Eat-da</h1>
+            <IconButton onClick={() => alert('개발중 빨른시일내 업데이트함')}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ">
                 <path
                   strokeLinecap="round"
@@ -20,7 +20,9 @@ export default function Header() {
             </IconButton>
           </div>
           <div className="flex justify-center">
-            <div className="w-56 z-10 bg-white text-gray-200 py-1 px-2 rounded-full">search</div>
+            <div onClick={() => alert('개발중 빨른시일내 업데이트함')} className="w-full z-10 bg-white text-gray-200 py-1 px-2 rounded-full">
+              search
+            </div>
           </div>
         </div>
       </div>

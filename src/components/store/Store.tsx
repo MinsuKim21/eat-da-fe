@@ -1,14 +1,13 @@
 import React, { ForwardedRef } from 'react';
-import IconButton from './IconButton';
-import Icon1 from './Icon';
+import IconButton from '../IconButton';
+import Icon1 from '../Icon';
 import location from '@../../public/assets/location.svg';
 import call from '@../../public/assets/call.svg';
 import eye from '@../../public/assets/eye.svg';
-import withList from '../hocs/withList';
-import { GetCategoryStore } from '../api/Store';
+import withList from '../../hocs/withList';
 
 type StoreProp = {
-  result: GetCategoryStore;
+  result: any;
 };
 
 function Store({ result }: StoreProp) {
