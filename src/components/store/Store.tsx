@@ -13,7 +13,7 @@ type StoreProp = {
 function Store({ result }: StoreProp) {
   return (
     <div>
-      <div className="w-[343px] h-[120px] bg-zinc-300 rounded-lg flex justify-between pt-[15px] px-[15px]">
+      <div className="w-full max-w-md h-[120px] bg-zinc-700 rounded-lg flex justify-between pt-[15px] px-[15px]">
         <div>
           <div className="text-[15px] font-bold font-['Inter'] leading-[18px] mb-[2px]">음식점 이름</div>
           <div className=" text-[10px] font-medium font-['Inter'] leading-[14px] mb-[28px]">주소</div>

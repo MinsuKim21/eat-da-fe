@@ -60,7 +60,7 @@ export default function CardList() {
     },
   ];
   return (
-    <div className="flex flex-col items-center justify-center gap-y-[0.5rem]">
+    <div className="w-full max-w-md flex flex-col items-center justify-center gap-y-[0.5rem]">
       {dummy.map((item) => {
         const { id, ...rest } = item;
         return <Card key={id} props={rest} />;
