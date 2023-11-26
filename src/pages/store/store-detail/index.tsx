@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, useParams } from 'react-router';
+import { useParams } from 'react-router';
 // import withList from '../../hocs/withList';
 import Store from '../../../components/store/Store';
 
