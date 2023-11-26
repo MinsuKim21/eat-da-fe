@@ -9,7 +9,7 @@ export interface Menu {
   imageAddress?: string;
 }
 
-export async function getMenus(): Promise<{ data: Menu[] }> {
+export async function getMenus(): Promise<any> {
   try {
     const res = await api.get(`${PATH}`);
     return res.data;

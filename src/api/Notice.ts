@@ -9,7 +9,7 @@ export interface Notice {
   createAt: string;
 }
 
-export async function getNotices(): Promise<{ data: Notice[] }> {
+export async function getNotices(): Promise<any> {
   try {
     const res = await api.get(`${PATH}`);
     return res.data;

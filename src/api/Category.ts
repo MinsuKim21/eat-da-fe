@@ -7,7 +7,7 @@ export interface Category {
   name: string;
 }
 
-export async function getCategories(): Promise<{ data: Category[] }> {
+export async function getCategories(): Promise<any> {
   try {
     const res = await api.get(`${PATH}`);
     return res.data;

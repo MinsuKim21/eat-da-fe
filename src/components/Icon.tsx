@@ -7,7 +7,7 @@ type iconProps = {
   height?: number;
 };
 
-export default function Icon1({ iconName, alt, width, height }: iconProps) {
+export default function Icon({ iconName, alt, width, height }: iconProps) {
   return (
     <div>
       <img src={iconName} alt={alt} width={width} height={height}></img>

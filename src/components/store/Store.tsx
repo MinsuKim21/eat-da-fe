@@ -1,42 +1,65 @@
-import React, { ForwardedRef } from 'react';
-import IconButton from '../IconButton';
-import Icon1 from '../Icon';
-import location from '@../../public/assets/location.svg';
-import call from '@../../public/assets/call.svg';
-import eye from '@../../public/assets/eye.svg';
-import withList from '../../hocs/withList';
+import React from 'react';
+import { ReactComponent as CallIcon } from '../../assets/call.svg';
+import { ReactComponent as LocationIcon } from '../../assets/location.svg';
+import { ReactComponent as EyeIcon } from '../../assets/eye.svg';
+import StoreImage from './StoreImage';
+import Menu from './Menu';
+import { getStore } from '../../api/Store';
+import { useQuery } from '@tanstack/react-query';
+import NotFoundPage from '../../pages/err';
+import Skeleton from '../Skeleton';
+import { getMenus } from '../../api/Menu';
+export default function Store({ id }) {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['getStore', id],
+    queryFn: () => getStore(id),
+  });
+  const { data: menuData, isLoading: isMenuLoading } = useQuery({
+    queryKey: ['getMenu', id],
+    queryFn: () => getMenus(),
+  });
+  console.log('🚀 ~ Store ~ data:', data);
+  console.log('🚀 ~ Store ~ menuData:', menuData);
 
-type StoreProp = {
-  result: any;
-};
+  if (error) {
+    console.log('🚀 ~ Store ~ error:', error);
+    // return <NotFoundPage />;
+  }
 
-function Store({ result }: StoreProp) {
+  if (isLoading) {
+    return (
+      <>
+        <div className="w-full max-w-md  bg-white rounded-md">
+          <Skeleton />;
+        </div>
+        <div className="p-5">
+          <div className="text-base font-bold font-['Inter'] leading-snug mb-5">음식점 이름</div>
+          <div className=" text-red-500 text-2xl font-semibold font-['Inter'] leading-snug">MENU</div>
+          <Skeleton />
+        </div>
+      </>
+    );
+  }
+
   return (
-    <div>
-      <div className="w-[343px] h-[120px] bg-zinc-300 rounded-lg flex justify-between pt-[15px] px-[15px]">
-        <div>
-          <div className="text-[15px] font-bold font-['Inter'] leading-[18px] mb-[2px]">음식점 이름</div>
-          <div className=" text-[10px] font-medium font-['Inter'] leading-[14px] mb-[28px]">주소</div>
-          <div className=" text-xs font-semibold font-['Inter'] mb-[4px]">영업일/시간</div>
-          <div className="w-20 h-4 bg-stone-950 rounded-2xl flex justify-evenly items-center">
-            <Icon1 iconName={eye} alt="조회 이미지"></Icon1>
-            <div className=" text-white text-[9px] font-normal font-['Inter'] leading-3 ">50명 조회중</div>
-          </div>
-        </div>
-        <div>
-          <IconButton className="w-10 h-10 bg-neutral-950 rounded-full flex items-center justify-center mb-[10px]">
-            <Icon1 iconName={location} alt="위치 이미지"></Icon1>
-          </IconButton>
-          <IconButton className="w-10 h-10 bg-neutral-950 rounded-full flex items-center justify-center">
-            <Icon1 iconName={call} alt="전화 이미지"></Icon1>
-          </IconButton>
-        </div>
-      </div>
-      <div className="w-[344px] h-10 bg-black rounded-[9px] flex justify-center items-center">
-        <IconButton className="w-[162px] h-5 text-white text-[17px] font-extrabold font-['Inter'] leading-snug">MENU</IconButton>
+    <div className="w-full max-w-md  bg-white rounded-md">
+      <StoreImage imgSrc={''}>
+        <CallIcon />
+        <LocationIcon />
+        <EyeIcon />
+      </StoreImage>
+      <div className="p-5">
+        <div className="text-base font-bold font-['Inter'] leading-snug mb-5">음식점 이름</div>
+        <div className=" text-red-500 text-2xl font-semibold font-['Inter'] leading-snug">MENU</div>
+        {/* {menuData?.body.map(() => (
+          <Menu></Menu>
+        ))} */}
+        <Menu></Menu>
+        <Menu></Menu>
+        <Menu></Menu>
+        <Menu></Menu>
+        <Menu></Menu>
       </div>
     </div>
   );
 }
-
-export default withList(Store, () => {}); // FIXME:

@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Card(props: any) {
-  console.log('🚀 ~ Card ~ props:', props);
   return (
     <div className="w-80 h-32 relative  bg-zinc-50 rounded-md mx-1">
       <div className="flex justify-start">
