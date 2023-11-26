@@ -22,9 +22,9 @@ export type PostBanner = PatchBanner;
 // 전체 배너 조회
 export type GetBanners = Banner[];
 
-export async function getBanners(params: any): Promise<{ data: Banner[] }> {
+export async function getBanners(): Promise<{ data: Banner[] }> {
   try {
-    const res = await api.get(`${PATH}`, { params });
+    const res = await api.get(`${PATH}`);
     return res.data;
   } catch (e) {
     throw e;

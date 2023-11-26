@@ -47,7 +47,7 @@ export async function getStores(params: IGetStoreParams): Promise<{ data: Store[
 
 export async function getStore(id: string): Promise<any> {
   try {
-    const res = await api.post(`${PATH}/${id}`);
+    const res = await api.get(`${PATH}/${id}`);
     return res.data;
   } catch (err) {
     throw err;
