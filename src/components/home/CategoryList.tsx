@@ -17,7 +17,7 @@ export default function CategoryList() {
     );
   }
 
-  if (error || data.body.length === 0) {
+  if (error || data?.body.length === 0) {
     return (
       <div className="w-full max-w-md h-14 bg-white shadow flex items-center">
         <div className="w-full h-full overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide py-3">
